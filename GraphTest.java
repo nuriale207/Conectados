@@ -36,6 +36,7 @@ public class GraphTest {
 		
 		ArrayList<Integer> enlW5=new ArrayList<Integer>();
 		enlW5.add(4);
+		enlW5.add(3);
 		w4.anadirEnlaces(enlW5);
 		
 		ListaWebs.getListaWebs().resetear();
@@ -82,41 +83,46 @@ public class GraphTest {
 		assertTrue(g1.estanConectados("youtube.com", "amazon.com"));
 		assertFalse(g1.estanConectados("youtube.com", "ebay.com"));
 		assertTrue(g1.estanConectados("gmail.com", "booking.com"));
-		assertFalse(g1.estanConectados("booking.com", "amazon.com"));
-		
-		ListaWebs.getListaWebs().resetear();
-		ListaWebs.getListaWebs().cargarLista("index.txt", "pld-arcs-1-N.txt");
-		g2=new Graph();
-		g2.crearGrafo(ListaWebs.getListaWebs());
-		
-		int cont=0;
-		Random aleatorio1=new Random(ListaWebs.getListaWebs().getLength());
-		Random aleatorio2=new Random(ListaWebs.getListaWebs().getLength());
-		while(cont<100){
-			
-			Integer w1=aleatorio1.nextInt(ListaWebs.getListaWebs().getLength());
-			Integer w2=aleatorio2.nextInt(ListaWebs.getListaWebs().getLength()/2);
-
-			String web1=ListaWebs.getListaWebs().id2String(w1);
-			String web2=ListaWebs.getListaWebs().id2String(w2);
-			
-			System.out.println(g2.estanConectados(web1,web2));
-			cont++;
-		}
+		assertFalse(g1.estanConectados("booking.com", "ebay.com"));
+		assertTrue(g1.estanConectados("amazon.com", "amazon.com"));
+		assertTrue(g1.estanConectados("gmail.com", "gmail.com"));
+//		
+//		ListaWebs.getListaWebs().resetear();
+//		ListaWebs.getListaWebs().cargarLista("index.txt", "pld-arcs-1-N.txt");
+//		g2=new Graph();
+//		g2.crearGrafo(ListaWebs.getListaWebs());
+//		
+//		int cont=0;
+//		Random aleatorio1=new Random(ListaWebs.getListaWebs().getLength());
+//		Random aleatorio2=new Random(ListaWebs.getListaWebs().getLength());
+//		while(cont<100){
+//			
+//			Integer w1=aleatorio1.nextInt(ListaWebs.getListaWebs().getLength());
+//			Integer w2=aleatorio2.nextInt(ListaWebs.getListaWebs().getLength()/2);
+//
+//			String web1=ListaWebs.getListaWebs().id2String(w1);
+//			String web2=ListaWebs.getListaWebs().id2String(w2);
+//			
+//			System.out.println(g2.estanConectados(web1,web2));
+//			cont++;
+//		}
 	}
 
 	@Test
-	public void testEstanConectados2() {
-		System.out.println(g1.estanConectados2("youtube.com", "gmail.com"));
-		System.out.println(g1.estanConectados2("youtube.com", "amazon.com"));
-		System.out.println(g1.estanConectados2("youtube.com", "ebay.com"));
-		System.out.println(g1.estanConectados2("gmail.com", "booking.com"));
+	public void testHayCamino() {
+		System.out.println(g1.hayCamino("youtube.com", "gmail.com"));
+		System.out.println(g1.hayCamino("youtube.com", "amazon.com"));
+		System.out.println(g1.hayCamino("youtube.com", "ebay.com"));
+		System.out.println(g1.hayCamino("gmail.com", "booking.com"));
+		System.out.println(g1.hayCamino("amazon.com", "amazon.com"));
+		System.out.println(g1.hayCamino("booking.com", "booking.com"));
+		System.out.println(g1.hayCamino("gmail.com", "gmail.com"));
 		
-		ListaWebs.getListaWebs().resetear();
-		ListaWebs.getListaWebs().cargarLista("index.txt", "pld-arcs-1-N.txt");
-		g2=new Graph();
-		g2.crearGrafo(ListaWebs.getListaWebs());
-		
+//		ListaWebs.getListaWebs().resetear();
+//		ListaWebs.getListaWebs().cargarLista("index.txt", "pld-arcs-1-N.txt");
+//		g2=new Graph();
+//		g2.crearGrafo(ListaWebs.getListaWebs());
+//		
 //		int cont=0;
 //		Random aleatorio1=new Random(ListaWebs.getListaWebs().getLength());
 //		Random aleatorio2=new Random(ListaWebs.getListaWebs().getLength());
@@ -127,10 +133,10 @@ public class GraphTest {
 //			String web1=ListaWebs.getListaWebs().id2String(w1);
 //			String web2=ListaWebs.getListaWebs().id2String(w2);
 //			
-//			System.out.println(g2.estanConectados2(web1,web2));
+//			System.out.println(g2.hayCamino(web1,web2));
 //			cont++;
 //		}
-//		
+		
 	}
 
 }
